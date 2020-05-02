@@ -1,6 +1,6 @@
 #!/bin/bash
 
-yum -y install vim squid httpd-tools
+yum -y install squid httpd-tools
 sed -i "s/http_access deny all/http_access allow all/" /etc/squid/squid.conf
 sed -i "s/http_port 3128/http_port 34567/" /etc/squid/squid.conf
 sed -i "$ a  error_directory /usr/share/squid/errors/ja" /etc/squid/squid.conf
