@@ -11,8 +11,7 @@ sed -i "$ a  request_header_access Cache-Control deny all" /etc/squid/squid.conf
 systemctl enable squid
 systemctl start squid
 
-if[ ! -e /var/spool/cron/root ]
-then
+if[[ ! -e /var/spool/cron/root ]]; then
  touch /var/spool/cron/root
 fi
 
