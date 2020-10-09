@@ -9,4 +9,5 @@ wget https://raw.githubusercontent.com/Ruuuiii/startup/master/settingSquid && ba
 
 
 crontab -e 
+
 0 11,23 * * * /usr/sbin/reboot
