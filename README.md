@@ -6,7 +6,7 @@ sudo su -
 yum -y install wget
 
 wget https://raw.githubusercontent.com/Ruuuiii/startup/master/settingSquid && bash settingSquid \
-or if using Web Arena vps,\n
+or if using Web Arena vps,use under code.
 wget https://raw.githubusercontent.com/Ruuuiii/startup/master/webArenaBasicauth && bash settingSquid 
 
 
