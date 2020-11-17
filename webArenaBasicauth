@@ -16,7 +16,7 @@ sed -i "$ a  acl friday time F 0:00-24:00" /etc/squid/squid.conf
 sed -i "$ a  acl saturday time A 0:00-24:00" /etc/squid/squid.conf
 sed -i "$ a  http_access allow authenticated friday" /etc/squid/squid.conf
 sed -i "$ a  http_access allow authenticated saturday" /etc/squid/squid.conf
-sed -i "$ a  http_access deny all
+sed -i "$ a  http_access deny all" /etc/squid/squid.conf
 systemctl enable squid
 systemctl start squid
 firewall-cmd --zone=public --add-port=34567/tcp --permanent
