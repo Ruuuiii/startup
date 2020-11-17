@@ -8,9 +8,20 @@ sed -i "$ a  forwarded_for off" /etc/squid/squid.conf
 sed -i "$ a  request_header_access X-Forwarded-For deny all" /etc/squid/squid.conf
 sed -i "$ a  request_header_access Via deny all" /etc/squid/squid.conf
 sed -i "$ a  request_header_access Cache-Control deny all" /etc/squid/squid.conf
+
+sed -i "$ a  auth_param basic program /lib64/squid/basic_ncsa_auth /etc/squid/pass" /etc/squid/squid.conf
+sed -i "$ a  auth_param basic realm proxy" /etc/squid/squid.conf
+sed -i "$ a  acl authenticated proxy_auth REQUIRED" /etc/squid/squid.conf
+sed -i "$ a  acl friday time F 0:00-24:00" /etc/squid/squid.conf
+sed -i "$ a  acl saturday time A 0:00-24:00" /etc/squid/squid.conf
+sed -i "$ a  http_access allow authenticated friday" /etc/squid/squid.conf
+sed -i "$ a  http_access allow authenticated saturday" /etc/squid/squid.conf
+sed -i "$ a  http_access deny all
+
 systemctl enable squid
 systemctl start squid
 
-touch /var/spool/cron/root
+firewall-cmd --zone=public --add-port=34567/tcp --permanent
+firewall-cmd --reload
 
-sed -i '$ a 0 11,23 * * * /usr/sbin/reboot' /var/spool/cron/root
+htpasswd -c -i -b /etc/squid/pass week13 tezlpr0mpt
