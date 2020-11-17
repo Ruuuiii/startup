@@ -14,4 +14,4 @@ wget https://raw.githubusercontent.com/Ruuuiii/startup/master/webArenaBasicauth 
 
 crontab -e 
 
-0 11,23 * * * /usr/sbin/reboot
+0 9,21 * * * /usr/sbin/reboot
